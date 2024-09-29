@@ -349,7 +349,8 @@ function cell:Window(gameid, version)
 	local window_functions = {}
 
 	function window_functions:NewTab(name, icon, selected)
-		local newtab = Instance.new("ImageButton", ui.Tabs);
+		local order = 0
+        local newtab = Instance.new("ImageButton", ui.Tabs);
 		newtab["BorderSizePixel"] = 0;
 		newtab["AutoButtonColor"] = false;
 		newtab["BackgroundColor3"] = Color3.fromRGB(21, 21, 21);
@@ -462,11 +463,12 @@ function cell:Window(gameid, version)
 		local tab_functions = {}
 
 		function tab_functions:Button(add_config)
-			local button = Instance.new("ImageButton", items);
+			order+=1
+            local button = Instance.new("ImageButton", items);
 			button["BorderSizePixel"] = 0;
 			button["AutoButtonColor"] = false;
 			button["BackgroundColor3"] = Color3.fromRGB(21, 21, 21);
-			button["LayoutOrder"] = 1;
+			button["LayoutOrder"] = order;
 			button["Size"] = UDim2.new(1, -10, 0, 40);
 			button["Name"] = add_config.Name
 			button["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -527,11 +529,12 @@ function cell:Window(gameid, version)
 		end
 
 		function tab_functions:Switch(add_config)
-			local switch = Instance.new("ImageButton", items);
+			order+=1
+            local switch = Instance.new("ImageButton", items);
 			switch["BorderSizePixel"] = 0;
 			switch["AutoButtonColor"] = false;
 			switch["BackgroundColor3"] = Color3.fromRGB(21, 21, 21);
-			switch["LayoutOrder"] = 1;
+			switch["LayoutOrder"] = order;
 			switch["Size"] = UDim2.new(1, -10, 0, 40);
 			switch["Name"] = add_config.Name
 			switch["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -622,12 +625,12 @@ function cell:Window(gameid, version)
 		end
 
 		function tab_functions:Input(add_config)
-
+            order+=1
 			local input = Instance.new("ImageButton", items);
 			input["BorderSizePixel"] = 0;
 			input["AutoButtonColor"] = false;
 			input["BackgroundColor3"] = Color3.fromRGB(21, 21, 21);
-			input["LayoutOrder"] = 1;
+			input["LayoutOrder"] = order;
 			input["Size"] = UDim2.new(1, -10, 0, 40);
 			input["Name"] = add_config.Name
 			input["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -721,11 +724,12 @@ function cell:Window(gameid, version)
 		end
 
 		function tab_functions:Selector(add_config)
-			local selector = Instance.new("ImageButton", items);
+			order+=1
+            local selector = Instance.new("ImageButton", items);
 			selector["BorderSizePixel"] = 0;
 			selector["AutoButtonColor"] = false;
 			selector["BackgroundColor3"] = Color3.fromRGB(21, 21, 21);
-			selector["LayoutOrder"] = 1;
+			selector["LayoutOrder"] = order;
 			selector["Size"] = UDim2.new(1, -10, 0, 40);
 			selector["Name"] = add_config.Name
 			selector["BorderColor3"] = Color3.fromRGB(0, 0, 0);
@@ -901,6 +905,7 @@ function cell:Window(gameid, version)
 		end
 		
 		function tab_functions:Label(text)
+            order+=1
 			local Label = Instance.new("TextLabel", items);
 			Label["TextTruncate"] = Enum.TextTruncate.SplitWord;
 			Label["BorderSizePixel"] = 0;
@@ -914,6 +919,7 @@ function cell:Window(gameid, version)
 			Label["RichText"] = true
 			Label["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 			Label["Text"] = text
+            Label["LayoutOrder"] = order;
 			Label["Name"] = [[Label]];
 			Label["Position"] = UDim2.new(0, 10, 0, 0);
 			
@@ -931,11 +937,13 @@ function cell:Window(gameid, version)
 		end
 		
 		function tab_functions:Info(text)
+            order+=1
 			local info = Instance.new("Frame", items);
 			info["BorderSizePixel"] = 0;
 			info["BackgroundColor3"] = Color3.fromRGB(31, 57, 92);
 			info["AutomaticSize"] = Enum.AutomaticSize.Y;
 			info["Size"] = UDim2.new(1, -10, 0, 30);
+            info["LayoutOrder"] = order;
 			info["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 			info["Name"] = [[info]];
 
@@ -954,7 +962,7 @@ function cell:Window(gameid, version)
 			label["RichText"] = true;
 			label["Size"] = UDim2.new(0, 200, 1, 0);
 			label["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-			label["Text"] = [[text]];
+			label["Text"] = text
 			label["AutomaticSize"] = Enum.AutomaticSize.Y;
 			label["Name"] = [[Label]];
 			label["Position"] = UDim2.new(0, 32, 0, 0);
