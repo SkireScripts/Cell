@@ -899,6 +899,98 @@ function cell:Window(gameid, version)
 
 			animatebutton(selector)
 		end
+		
+		function tab_functions:Label(text)
+			local Label = Instance.new("TextLabel", items);
+			Label["TextTruncate"] = Enum.TextTruncate.SplitWord;
+			Label["BorderSizePixel"] = 0;
+			Label["TextXAlignment"] = Enum.TextXAlignment.Left;
+			Label["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+			Label["TextSize"] = 14;
+			Label["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+			Label["TextColor3"] = Color3.fromRGB(255, 255, 255);
+			Label["BackgroundTransparency"] = 1;
+			Label["Size"] = UDim2.new(1, -20, 0, 30);
+			Label["RichText"] = true
+			Label["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+			Label["Text"] = text
+			Label["Name"] = [[Label]];
+			Label["Position"] = UDim2.new(0, 10, 0, 0);
+			
+			local label_functions = {}
+			
+			function label_functions:Remove()
+				Label:Destroy()
+			end
+
+			function label_functions:Edit(text)
+				Label.Text = text
+			end
+			
+			return label_functions
+		end
+		
+		function tab_functions:Info(text)
+			local info = Instance.new("Frame", items);
+			info["BorderSizePixel"] = 0;
+			info["BackgroundColor3"] = Color3.fromRGB(31, 57, 92);
+			info["AutomaticSize"] = Enum.AutomaticSize.Y;
+			info["Size"] = UDim2.new(1, -10, 0, 30);
+			info["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+			info["Name"] = [[info]];
+
+			local uicorner = Instance.new("UICorner", info);
+			uicorner["CornerRadius"] = UDim.new(0, 4);
+
+			local label = Instance.new("TextLabel", info);
+			label["TextWrapped"] = true;
+			label["BorderSizePixel"] = 0;
+			label["TextXAlignment"] = Enum.TextXAlignment.Left;
+			label["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+			label["TextSize"] = 14;
+			label["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Medium, Enum.FontStyle.Normal);
+			label["TextColor3"] = Color3.fromRGB(255, 255, 255);
+			label["BackgroundTransparency"] = 1;
+			label["RichText"] = true;
+			label["Size"] = UDim2.new(0, 200, 1, 0);
+			label["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+			label["Text"] = [[text]];
+			label["AutomaticSize"] = Enum.AutomaticSize.Y;
+			label["Name"] = [[Label]];
+			label["Position"] = UDim2.new(0, 32, 0, 0);
+
+			local padding = Instance.new("UIPadding", label);
+			padding["PaddingTop"] = UDim.new(0, 5);
+			padding["PaddingBottom"] = UDim.new(0, 5);
+			
+			local image = Instance.new("ImageLabel", info);
+			image["BorderSizePixel"] = 0;
+			image["BackgroundColor3"] = Color3.fromRGB(43, 81, 130);
+			image["ImageColor3"] = Color3.fromRGB(77, 147, 232);
+			image["AnchorPoint"] = Vector2.new(0, 0.5);
+			image["Image"] = [[rbxassetid://10723415903]];
+			image["Size"] = UDim2.new(0, 18, 0, 18);
+			image["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+			image["BackgroundTransparency"] = 1;
+			image["Position"] = UDim2.new(0, 7, 0.5, 0);
+
+			local stroke = Instance.new("UIStroke", info);
+			stroke["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+			stroke["Thickness"] = 1.6;
+			stroke["Color"] = Color3.fromRGB(54, 105, 163);
+
+			local info_functions = {}
+
+			function info_functions:Remove()
+				info:Destroy()
+			end
+
+			function info_functions:Edit(text)
+				info.Text = text
+			end
+
+			return info_functions
+		end
 
 		return tab_functions
 	end
